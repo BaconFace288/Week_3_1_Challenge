@@ -26,6 +26,8 @@ namespace Week_3_1_Challenge
             string ageInput = Console.ReadLine();
             int age = int.Parse(ageInput);
             Console.WriteLine($"You are {age} years old.");
+
+            GetUserAge(); // Recursion to allow the user to re-enter their age until a valid input is provided. Note this will call it infinite times, so you have to place this in the proper location in your try/catch block to avoid infinite recursion.
         }
     }
 }
