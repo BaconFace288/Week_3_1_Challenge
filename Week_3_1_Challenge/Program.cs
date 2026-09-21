@@ -11,6 +11,7 @@ namespace Week_3_1_Challenge
         static void Main(string[] args)
         {
             GetUserAge();
+            // No Additional code is needed in the Main method since the GetUserAge method handles the user input and validation.
         }
 
         static void GetUserAge()
