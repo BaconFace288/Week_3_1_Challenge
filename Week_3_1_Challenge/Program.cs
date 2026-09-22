@@ -23,12 +23,33 @@ namespace Week_3_1_Challenge
              * 3. If the user enters a negative integer, display an error message indicating that age cannot be negative.
              * 4. Add recursion to allow the user to re-enter their age until a valid input is provided.
              */
-            Console.WriteLine("Enter your age: ");
-            string ageInput = Console.ReadLine();
-            int age = int.Parse(ageInput);
-            Console.WriteLine($"You are {age} years old.");
 
-            GetUserAge(); // Recursion to allow the user to re-enter their age until a valid input is provided. Note this will call it infinite times, so you have to place this in the proper location in your try/catch block to avoid infinite recursion.
+            try
+            {
+                Console.WriteLine("Enter your age: ");
+                string ageInput = Console.ReadLine();
+                int age = int.Parse(ageInput);
+                Console.WriteLine($"You are {age} years old.");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer for your age.");
+                GetUserAge(); // Recursion to allow the user to re-enter their age until a valid input is provided.
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("The number you entered is too large or too small. Please enter a valid integer for your age.");
+                GetUserAge(); // Recursion to allow the user to re-enter their age until a valid input is provided.
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Age cannot be negative. Please enter a valid age.");
+                GetUserAge(); // Recursion to allow the user to re-enter their age until a valid input is provided.
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                GetUserAge(); // Recursion to allow the user to re-enter their age until a valid input is provided. Note this will call it infinite times, so you have to place this in the proper location in your try/catch block to avoid infinite recursion.
         }
     }
 }
